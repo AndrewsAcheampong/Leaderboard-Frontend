@@ -92,14 +92,40 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <div class="form-group">
-      <label for="input">input</label>
-      <input type="text"
-             class="form-control" name="input" id="vinput" aria-describedby="helpId" placeholder="enter name">
-    </div>
+  <div class="modal-body ">
+   <div class="row">
+     <div class="col">
+       <div class="form-group">
+         <label for="input">Name</label>
+         <p>Name</p>
+       </div>
+       <div class="form-group">
+         <label for="input">Clan</label>
+         <p>Clan</p>
+       </div>
+
+     </div>
+     <div class="col">
+       <div class="form-group">
+         <label for="input">Honour</label>
+         <p>Honour</p>
+       </div>
+       <div class="form-group">
+         <label for="input">Overall Rank</label>
+         <p>Overall Rank</p>
+       </div>
+     </div>
+     <div class="col">
+       <div class="form-group">
+         <label for="input">Languages</label>
+         <ul>
+           <li>Java</li>
+         </ul>
+       </div>
+     </div>
+   </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Save</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>
