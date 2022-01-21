@@ -14,7 +14,7 @@ import {LeaderboardService} from "../leaderboard.service";
 export class LeaderboardComponent implements OnInit{
   ELEMENT_DATA: Leaderboard[] = [];
 
-  displayedColumns: string[] = ['username', 'name', 'clan','honour','languages','overall_rank'];
+  displayedColumns: string[] = ['username', 'name', 'clan','honour','overall_rank','Action'];
   dataSource = new MatTableDataSource<Leaderboard>(this.ELEMENT_DATA);
 
   constructor(private modalService: NgbModal,public lbs:LeaderboardService) {
@@ -32,6 +32,10 @@ export class LeaderboardComponent implements OnInit{
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
+
+  openViewMoreModal(content: any) {
     this.modalService.open(content, { centered: true });
   }
 

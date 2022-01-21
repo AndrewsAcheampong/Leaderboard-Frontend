@@ -1,9 +1,11 @@
-<nav class="navbar navbar-light bg-primary sticky-top">
-  <div class="container-fluid">
-    <h1 class="text-light">LeaderBoard</h1>
-    <button class="btn btn-light mb-2 mr-2" (click)="openVerticallyCentered(content)">Add User</button>
-  </div>
-</nav>
+<header class="w-100 ">
+  <nav class="navbar navbar-light bg-primary sticky-top">
+    <div class="container-fluid">
+      <h1 class="text-light">LeaderBoard</h1>
+      <button class="btn btn-light mb-2 mr-2" (click)="openVerticallyCentered(content)">Add User</button>
+    </div>
+  </nav>
+</header>
 
 <section class="container mt-3">
   <mat-form-field appearance="standard">
@@ -35,14 +37,21 @@
       <td mat-cell *matCellDef="let element"> {{element.honour}} </td>
     </ng-container>
     <!-- Symbol Column -->
-    <ng-container matColumnDef="languages">
-      <th mat-header-cell *matHeaderCellDef> Languages </th>
-      <td mat-cell *matCellDef="let element "> </td>
-    </ng-container>
+<!--    <ng-container matColumnDef="languages">-->
+<!--      <th mat-header-cell *matHeaderCellDef> Languages </th>-->
+<!--      <td mat-cell *matCellDef="let element "> </td>-->
+<!--    </ng-container>-->
+
     <!-- Symbol Column -->
     <ng-container matColumnDef="overall_rank">
       <th mat-header-cell *matHeaderCellDef> Overall Rand </th>
       <td mat-cell *matCellDef="let element"> {{element.overall_rank}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <button type="button" class="btn btn-primary btn-sm" (click)="openViewMoreModal(ViewMorecontent)">View More</button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -69,6 +78,25 @@
       <input type="text"
              class="form-control" name="input" id="input" aria-describedby="helpId" placeholder="enter name">
       <small id="helpId" class="form-text text-muted">Help text</small>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #ViewMorecontent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="input">input</label>
+      <input type="text"
+             class="form-control" name="input" id="vinput" aria-describedby="helpId" placeholder="enter name">
     </div>
   </div>
   <div class="modal-footer">
