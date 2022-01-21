@@ -65,6 +65,7 @@
 
 </section>
 
+
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Modal title</h4>
@@ -72,17 +73,23 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <div class="modal-body">
+<form #user="ngForm" (ngSubmit)="addUser(user)">
     <div class="form-group">
       <label for="input">input</label>
       <input type="text"
-             class="form-control" name="input" id="input" aria-describedby="helpId" placeholder="enter name">
+             class="form-control" ngModel name="username" #username="ngModel" aria-describedby="helpId" placeholder="enter name">
       <small id="helpId" class="form-text text-muted">Help text</small>
     </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" (click)="modal.close('Close click')">Save</button>
+    </div>
+
+</form>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Save</button>
-  </div>
+
 </ng-template>
 
 <ng-template #ViewMorecontent let-modal>
