@@ -27,10 +27,10 @@ export class LeaderboardComponent implements OnInit{
 
   displayedColumns: string[] = ['username', 'name', 'clan','honour','overall_rank','Action'];
   dataSource = new MatTableDataSource<Leaderboard>(this.ELEMENT_DATA);
+  userData: Leaderboard = {clan: "", honour: 0, languages: [], name: "", overall_rank: 0, username: ""};
 
   constructor(private service: AddUserService,private modalService: NgbModal,
     public lbs:LeaderboardService,private router:Router,private route:ActivatedRoute) {
-
   }
 
   ngOnInit(): void {
@@ -42,7 +42,16 @@ export class LeaderboardComponent implements OnInit{
 
   }
 
-
+  callAll(content: any, payload: any) {
+    this.openViewMoreModal(content);
+    this.getUserData(payload);
+  }
+  getUserData(payload : any) {
+    this.lbs.getLeaderboardUser(payload).subscribe((response) => {
+      this.userData = response as LeaderboardInterface;
+      console.log(this.userData)
+    })
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -57,7 +66,6 @@ export class LeaderboardComponent implements OnInit{
   }
 
 
-
 name : string = " ";
 
 
@@ -69,7 +77,6 @@ let resp =  this.service.registerUser(user.value)
 resp.subscribe((data)=>this.message=data)
 
 }
-
 
 
   }

@@ -12,4 +12,8 @@ export class LeaderboardService {
   getLeaderBoard(){
     return this.http.get<Leaderboard[]>(this.url)
   }
+
+  getLeaderboardUser(username: String) {
+    return this.http.get<Leaderboard>(this.url+"/users/"+username)
+  }
 }
