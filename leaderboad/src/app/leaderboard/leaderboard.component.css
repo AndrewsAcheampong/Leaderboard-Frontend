@@ -17,3 +17,8 @@ table {
 .light-blue-backdrop {
   background-color: #000000;
 }
+
+.user-font-setting {
+  font-size: 26px;
+  font-family: 'Dongle', sans-serif;
+}
