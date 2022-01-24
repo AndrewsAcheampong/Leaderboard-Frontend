@@ -15,49 +15,51 @@
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="username">
-      <th mat-header-cell *matHeaderCellDef> User name </th>
+      <th mat-header-cell *matHeaderCellDef> User name</th>
       <td mat-cell *matCellDef="let element"> {{element.username}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef> Name</th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="clan">
-      <th mat-header-cell *matHeaderCellDef> Clan </th>
+      <th mat-header-cell *matHeaderCellDef> Clan</th>
       <td mat-cell *matCellDef="let element"> {{element.clan}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="honour">
-      <th mat-header-cell *matHeaderCellDef> Honour </th>
+      <th mat-header-cell *matHeaderCellDef> Honour</th>
       <td mat-cell *matCellDef="let element"> {{element.honour}} </td>
     </ng-container>
     <!-- Symbol Column -->
-<!--    <ng-container matColumnDef="languages">-->
-<!--      <th mat-header-cell *matHeaderCellDef> Languages </th>-->
-<!--      <td mat-cell *matCellDef="let element "> </td>-->
-<!--    </ng-container>-->
+    <!--    <ng-container matColumnDef="languages">-->
+    <!--      <th mat-header-cell *matHeaderCellDef> Languages </th>-->
+    <!--      <td mat-cell *matCellDef="let element "> </td>-->
+    <!--    </ng-container>-->
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="overall_rank">
-      <th mat-header-cell *matHeaderCellDef> Overall Rand </th>
+      <th mat-header-cell *matHeaderCellDef> Overall Rand</th>
       <td mat-cell *matCellDef="let element"> {{element.overall_rank}} </td>
     </ng-container>
     <ng-container matColumnDef="Action">
-      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <th mat-header-cell *matHeaderCellDef> Action</th>
       <td mat-cell *matCellDef="let element">
-        <button type="button" class="btn btn-primary btn-sm" (click)=" callAll(ViewMorecontent, element.username)">View More</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)=" callAll(ViewMorecontent, element.username)">View
+          More
+        </button>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-     Row shown when there is no matching data.
+    Row shown when there is no matching data.
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr>
@@ -75,63 +77,66 @@
   </div>
 
   <div class="modal-body">
-<form #user="ngForm" (ngSubmit)="addUser(user)">
-    <div class="form-group">
-      <label for="input">input</label>
-      <input type="text"
-             class="form-control" ngModel name="username" #username="ngModel" aria-describedby="helpId" placeholder="enter name">
-      <small id="helpId" class="form-text text-muted">Help text</small>
-    </div>
+    <form #user="ngForm" (ngSubmit)="addUser(user)">
+      <div class="form-group">
+        <label for="input">input</label>
+        <input type="text"
+               class="form-control" ngModel name="username" #username="ngModel" aria-describedby="helpId"
+               placeholder="enter name">
+        <small id="helpId" class="form-text text-muted">Help text</small>
+      </div>
 
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" (click)="modal.close('Close click')">Save</button>
-    </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="modal.close('Close click')">Save</button>
+      </div>
 
-</form>
+    </form>
   </div>
 
 </ng-template>
 
 <ng-template #ViewMorecontent let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Username</h4>
+    <h4 class="modal-title font-weight-bold">{{ userData.username }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <div class="row">
-      <div class="col">
-        <h4>Name</h4>
-        <p>{{ userData.name.length > 0 ? userData.name : "Name not set" }}</p>
-      </div>
-      <div class="col">
-        <h4>Clan</h4>
-        <p>{{ userData.clan}}</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h4>Honour</h4>
-        <p>{{ userData.honour }}</p>
-      </div>
-      <div class="col">
-        <h4>Languages</h4>
-        <ul *ngFor="let element of userData.languages">
+      <div class="row">
+        <div class="col">
+          <div class="d-flex">
+            <h4>Name</h4>
+            <p class="pl-2  mt-0">{{ userData.name.length > 0 ? userData.name : "Name not set" }}</p>
+          </div>
+          <div class="d-flex">
+            <h4>Clan</h4>
+            <p class="pl-3">{{ userData.clan}}</p>
+          </div>
+          <div class="d-flex">
+            <h4>Honour</h4>
+            <p class="pl-3">{{ userData.honour }}</p>
+          </div>
+        </div>
 
-          <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ element.name }}/{{ element.name }}-original.svg" height="40px" width="30px"/> {{ element.rank }}</li>
-        </ul>
+        <div class="col">
+          <div class="d-flex">
+            <h4>OverallRank</h4>
+            <p class="pl-3">{{ userData.overall_rank }}</p>
+          </div>
+          <div class="d-flex">
+            <h4>Languages</h4>
+            <div class="pl-2" *ngFor="let element of userData.languages">
+              <div style="float: left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ element.name }}/{{ element.name }}-original.svg"
+                     height="35px" width="25px"/>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-    </div>
-    <div class="row">
-      <div class="col">
-        <h4>OverallRank</h4>
-        <p>{{ userData.overall_rank }}</p>
-      </div>
-    </div>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-  </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
 </ng-template>

@@ -6,9 +6,9 @@ import { Leaderboard } from '../leaderboard';
 import { LeaderboardInterface } from '../leaderboard';
 import {LeaderboardService} from "../leaderboard.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import { AddUserService } from './../add-user.service';
+import { AddUserService } from '../add-user.service';
 import { NgForm } from '@angular/forms';
-import { User } from './../user';
+import { User } from '../user';
 
 
 
@@ -47,7 +47,7 @@ export class LeaderboardComponent implements OnInit{
     this.getUserData(payload);
   }
   getUserData(payload : any) {
-    this.lbs.getLeaderboardUser(payload).subscribe((response) => {
+    this.lbs.getUserFromLeaderboard(payload).subscribe((response) => {
       this.userData = response as LeaderboardInterface;
       console.log(this.userData)
     })

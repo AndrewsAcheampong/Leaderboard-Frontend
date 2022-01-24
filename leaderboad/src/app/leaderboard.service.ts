@@ -8,12 +8,12 @@ import {Leaderboard} from "./leaderboard";
 export class LeaderboardService {
 
   constructor(private http: HttpClient) { }
-  url:string = "http://localhost:5050/v1/leaderboard";
+  url:string = "http://localhost:8080/v1/leaderboard";
   getLeaderBoard(){
     return this.http.get<Leaderboard[]>(this.url)
   }
 
-  getLeaderboardUser(username: String) {
+  getUserFromLeaderboard(username: String) {
     return this.http.get<Leaderboard>(this.url+"/users/"+username)
   }
 }
