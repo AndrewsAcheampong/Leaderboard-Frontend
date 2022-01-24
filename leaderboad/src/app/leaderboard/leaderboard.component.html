@@ -97,7 +97,7 @@
 
 <ng-template #ViewMorecontent let-modal>
   <div class="modal-header">
-    <h4 class="modal-title font-weight-bold">{{ userData.username }}</h4>
+    <h4 class="modal-title text-info" style="font-size: 22px">{{ userData.username }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -106,30 +106,35 @@
       <div class="row">
         <div class="col">
           <div class="d-flex">
-            <h4>Name</h4>
-            <p class="pl-2  mt-0">{{ userData.name.length > 0 ? userData.name : "Name not set" }}</p>
+<!--            <h4>Name</h4>-->
+            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+            <p class="pl-2  mt-0 user-font-setting">{{ userData.name.length > 0 ? userData.name : "Name not set" }}</p>
           </div>
-          <div class="d-flex">
-            <h4>Clan</h4>
-            <p class="pl-3">{{ userData.clan}}</p>
+          <div class="d-flex mt-3">
+<!--            <h4>Clan</h4>-->
+            <i class="fa fa-users fa-lg" aria-hidden="true"></i>
+            <p class="pl-3 user-font-setting">{{ userData.clan}}</p>
           </div>
-          <div class="d-flex">
-            <h4>Honour</h4>
-            <p class="pl-3">{{ userData.honour }}</p>
+          <div class="d-flex mt-3">
+<!--            <h4>Honour</h4>-->
+            <i class="fa fa-trophy fa-lg" aria-hidden="true"></i>
+            <p class="pl-3 user-font-setting">{{ userData.honour }}</p>
           </div>
         </div>
 
         <div class="col">
           <div class="d-flex">
-            <h4>OverallRank</h4>
-            <p class="pl-3">{{ userData.overall_rank }}</p>
+<!--            <h4>OverallRank</h4>-->
+            <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+            <p class="pl-3 user-font-setting">{{ userData.overall_rank }}</p>
           </div>
-          <div class="d-flex">
-            <h4>Languages</h4>
+          <div class="d-flex mt-3">
+<!--            <h4>Languages</h4>-->
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
             <div class="pl-2" *ngFor="let element of userData.languages">
               <div style="float: left">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ element.name }}/{{ element.name }}-original.svg"
-                     height="35px" width="25px"/>
+                     height="30px" width="20px"/>
               </div>
             </div>
           </div>
